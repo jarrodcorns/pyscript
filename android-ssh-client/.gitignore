@@ -1,0 +1,11 @@
+.gradle/
+local.properties
+*.iml
+.cxx/
+captures/
+.idea/
+**/.DS_Store
+app/build/
+build/
+*.apk.idsig
+shareholder-ssh.jks
