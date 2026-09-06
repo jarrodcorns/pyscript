@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "Anchor & Oak",
+    "slug": "anchor-and-oak",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "anchorandoak",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0F382C"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anchorandoak.app",
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "Used only if you enable analytics integrations later."
+      }
+    },
+    "android": {
+      "package": "com.anchorandoak.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0F382C",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-splash-screen"
+    ],
+    "extra": {
+      "enableDevUnlock": false,
+      "revenueCatIosApiKey": "",
+      "revenueCatAndroidApiKey": ""
+    }
+  }
+}
