@@ -6,8 +6,9 @@ These static pages live in `mobile/docs/` and can be published with the repo wor
 
 1. GitHub repo → **Settings** → **Pages**
 2. **Build and deployment** → Source: **GitHub Actions** (not “Deploy from branch”)
-3. Merge or push the workflow in `.github/workflows/mobile-docs-pages.yml`
-4. Run the workflow (push to `main`/`master` or **Actions** → **Run workflow**)
+   - Or run the deploy workflow once: it uses `configure-pages` with **`enablement: true`** to request enablement automatically when the token allows it.
+3. Merge or push `.github/workflows/mobile-docs-pages.yml`
+4. Run the workflow (push to `main`/`master`/`cursor/anchor-oak-mobile-a6ec` or **Actions** → **Run workflow**)
 5. Support contact in legal pages: **Pralungolabs@gmail.com**
 
 ## Public URLs (after Pages is enabled)
