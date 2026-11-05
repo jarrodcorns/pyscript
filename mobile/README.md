@@ -8,46 +8,30 @@ Cross-platform React Native (Expo) app for partners supporting a spouse through 
 - React Navigation (tabs + native stack)
 - React Native Paper
 - Zustand + AsyncStorage (local-first progress)
-- RevenueCat (App Store / Play Billing for the R499 lifetime unlock)
-- Supabase (optional profile sync)
+- **expo-iap** — Google Play Billing / App Store for the **R299** lifetime unlock (`lifetime_unlock`)
 
-## Important: payments for App Store / Play Store
+## Payments
 
-For digital content consumed inside the app, **Apple and Google require in-app purchase** (RevenueCat wraps StoreKit / Play Billing). A Paystack-only checkout **cannot** be the sole unlock path for iOS worldwide or for most Android markets, including South Africa, unless you enroll in Google Play’s alternative billing program and still offer Play Billing.
+Digital content in the app must use **Google Play Billing** (Android) or **App Store IAP** (iOS). This project uses **expo-iap** directly — no RevenueCat, Paystack, or server-side unlock bypass.
 
-This repo implements **RevenueCat** as the production path. Paystack can be added later for a **web** checkout that unlocks the same RevenueCat entitlement — not as a bypass inside the app.
+| Item | Value |
+|------|--------|
+| Product id | `lifetime_unlock` |
+| Type | One-time / non-consumable |
+| Target list price | **R299 ZAR** (Play Console sets the charged price) |
+
+Entitlement is granted **only** when Play/App Store reports an owned purchase. There is no dev unlock or local bypass in production builds.
+
+See **[PLAY_RELEASE.md](./PLAY_RELEASE.md)** for Play Console setup and shipping an AAB today.
 
 ## Setup
 
 ```bash
 cd mobile
 npm install
-cp .env.example .env
 ```
 
-Fill in:
-
-- `EXPO_PUBLIC_REVENUECAT_IOS_API_KEY`
-- `EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY`
-- `EXPO_PUBLIC_REVENUECAT_ENTITLEMENT_ID` (default: `full_program`)
-- Optional Supabase keys
-
-### RevenueCat
-
-1. Create a project at [revenuecat.com](https://www.revenuecat.com)
-2. Add iOS + Android apps
-3. Create entitlement: `full_program`
-4. Create a **non-consumable** / lifetime product in App Store Connect + Play Console (target ~R499 ZAR tier)
-5. Map product to entitlement in RevenueCat
-6. Paste public SDK keys into `.env`
-
-### Dev unlock (local only)
-
-```env
-EXPO_PUBLIC_ENABLE_DEV_UNLOCK=true
-```
-
-Only works in development builds. Never ship this enabled.
+Requires a **development or production build** (EAS). In-app purchase does not work in Expo Go.
 
 ## Run
 
@@ -58,14 +42,23 @@ npm run ios
 npm run typecheck
 ```
 
+## Android release build
+
+```bash
+npx eas-cli login
+eas build -p android --profile production
+```
+
+`eas.json` production profile outputs an **AAB** (`buildType: app-bundle`).
+
 ## Store submission checklist
 
-- Privacy policy + terms (health/wellness disclosures)
+- Privacy policy URL (required) — health/mental wellness disclosures
 - Medical disclaimer in-app (included)
 - Crisis resources (SADAG lines for ZA — included)
 - Restore Purchases button (included)
-- Account deletion flow if you add sign-in later
-- App Store Connect / Play Console banking + tax setup
+- Data safety form + content rating (health app category)
+- Play in-app product `lifetime_unlock` at ~R299 ZAR
 
 ## Brand name alternatives
 

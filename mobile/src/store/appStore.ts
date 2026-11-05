@@ -1,11 +1,12 @@
 import { create } from 'zustand';
 import { totalDays } from '../data/curriculum';
+import type { Product } from 'expo-iap';
 import {
   checkUnlocked,
-  getCustomerInfoSafe,
-  getLifetimePackage,
-  getOfferingsSafe,
-  purchaseLifetimePackage,
+  FALLBACK_PRICE_LABEL,
+  fetchLifetimeProduct,
+  formatProductPrice,
+  purchaseLifetimeUnlock,
   restorePurchasesSafe,
 } from '../services/purchases';
 import {
@@ -14,14 +15,13 @@ import {
   markDayComplete,
   setCurrentDay,
 } from '../services/storage';
-import type { PurchasesPackage } from 'react-native-purchases';
 
 type AppState = {
   hydrated: boolean;
   unlocked: boolean;
   currentDay: number;
   completedDays: number[];
-  purchasePackage: PurchasesPackage | null;
+  lifetimeProduct: Product | null;
   priceLabel: string;
   purchaseLoading: boolean;
   purchaseError: string | null;
@@ -33,38 +33,35 @@ type AppState = {
   restoreProgram: () => Promise<boolean>;
 };
 
-export const useAppStore = create<AppState>((set, get) => ({
+export const useAppStore = create<AppState>((set) => ({
   hydrated: false,
   unlocked: false,
   currentDay: 1,
   completedDays: [],
-  purchasePackage: null,
-  priceLabel: 'R499.00',
+  lifetimeProduct: null,
+  priceLabel: FALLBACK_PRICE_LABEL,
   purchaseLoading: false,
   purchaseError: null,
 
   hydrate: async () => {
-    const [unlocked, currentDay, completedDays, offerings] = await Promise.all([
+    const [unlocked, currentDay, completedDays, lifetimeProduct] = await Promise.all([
       checkUnlocked(),
       getCurrentDay(),
       getCompletedDays(),
-      getOfferingsSafe(),
+      fetchLifetimeProduct(),
     ]);
 
-    const purchasePackage = getLifetimePackage(offerings);
-    const priceLabel = purchasePackage?.product.priceString ?? 'R499.00';
+    const priceLabel = formatProductPrice(lifetimeProduct);
 
     set({
       hydrated: true,
       unlocked,
       currentDay: Math.min(Math.max(currentDay, 1), totalDays),
       completedDays,
-      purchasePackage,
+      lifetimeProduct,
       priceLabel,
       purchaseError: null,
     });
-
-    await getCustomerInfoSafe();
   },
 
   refreshEntitlement: async () => {
@@ -87,20 +84,23 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   purchaseProgram: async () => {
-    const { purchasePackage } = get();
-    if (!purchasePackage) {
-      set({ purchaseError: 'Store product not configured yet. Check RevenueCat setup.' });
-      return false;
-    }
-
     set({ purchaseLoading: true, purchaseError: null });
-    const result = await purchaseLifetimePackage(purchasePackage);
+    const result = await purchaseLifetimeUnlock();
     set({ purchaseLoading: false });
 
     if (result.cancelled) return false;
 
+    if (result.pending) {
+      set({ purchaseError: result.errorMessage });
+      return false;
+    }
+
     if (!result.unlocked) {
-      set({ purchaseError: 'Purchase did not unlock the program. Try Restore Purchases or contact support.' });
+      set({
+        purchaseError:
+          result.errorMessage ??
+          'Purchase did not unlock the program. Try Restore Purchases or contact support.',
+      });
       return false;
     }
 
@@ -114,7 +114,9 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ purchaseLoading: false, unlocked: result.unlocked });
 
     if (!result.unlocked) {
-      set({ purchaseError: 'No previous purchase found for this store account.' });
+      set({
+        purchaseError: result.errorMessage ?? 'No previous purchase found for this store account.',
+      });
       return false;
     }
 

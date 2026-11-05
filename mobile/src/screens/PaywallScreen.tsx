@@ -60,8 +60,8 @@ export function PaywallScreen({ onUnlocked, dismissible, onDismiss }: PaywallScr
         <Text style={styles.price}>{priceLabel}</Text>
         <Text style={styles.priceSub}>One-time unlock · Lifetime access</Text>
         <Text style={styles.storeNote}>
-          Purchases are processed through Apple App Store or Google Play (via RevenueCat). Store
-          pricing may vary slightly by region and tax.
+          Purchases are processed through Google Play Billing (Android) or the App Store (iOS). The
+          price shown is indicative (~R299 ZAR); Google Play sets the amount charged at checkout.
         </Text>
       </View>
 

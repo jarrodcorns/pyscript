@@ -21,6 +21,7 @@
     },
     "android": {
       "package": "com.anchorandoak.app",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#0F382C",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -34,12 +35,19 @@
     },
     "plugins": [
       "expo-font",
-      "expo-splash-screen"
+      "expo-splash-screen",
+      "expo-iap",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "kotlinVersion": "2.2.0"
+          }
+        }
+      ]
     ],
     "extra": {
-      "enableDevUnlock": false,
-      "revenueCatIosApiKey": "",
-      "revenueCatAndroidApiKey": ""
+      "lifetimeUnlockProductId": "lifetime_unlock"
     }
   }
 }
