@@ -34,6 +34,12 @@ yarn-error.*
 .env
 .env*.local
 
+# Play Console API (never commit)
+google-play-service-account.json
+
+# Screenshot generator temp profiles
+store/assets/.chrome-profile/
+
 # typescript
 *.tsbuildinfo
 

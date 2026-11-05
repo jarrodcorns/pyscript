@@ -1,0 +1,20 @@
+<svg width="1080" height="1920" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1920" fill="#FAF8F5"/>
+  <text x="48" y="120" fill="#18312A" font-family="system-ui,sans-serif" font-size="56" font-weight="800">Learn</text>
+  <text x="48" y="200" fill="#66756F" font-family="system-ui,sans-serif" font-size="28">Evidence-informed guides for partners - not clinicians.</text>
+  <rect x="48" y="260" width="984" height="220" rx="22" fill="#FFFFFF" stroke="#DCE5E1"/>
+  <text x="80" y="310" fill="#4F7567" font-family="system-ui,sans-serif" font-size="22" font-weight="700" letter-spacing="1">RELATIONSHIP SCIENCE</text>
+  <text x="80" y="360" fill="#18312A" font-family="system-ui,sans-serif" font-size="34" font-weight="700">When depression moves into a marriage</text>
+  <text x="80" y="410" fill="#66756F" font-family="system-ui,sans-serif" font-size="26">How mental health reshapes communication and closeness.</text>
+  <text x="80" y="450" fill="#4F7567" font-family="system-ui,sans-serif" font-size="24">6 min read</text>
+  <rect x="48" y="520" width="984" height="220" rx="22" fill="#FFFFFF" stroke="#DCE5E1"/>
+  <text x="80" y="570" fill="#4F7567" font-family="system-ui,sans-serif" font-size="22" font-weight="700" letter-spacing="1">MEDICATION AND INTIMACY</text>
+  <text x="80" y="620" fill="#18312A" font-family="system-ui,sans-serif" font-size="34" font-weight="700">SSRIs, emotional blunting, and partners</text>
+  <text x="80" y="670" fill="#66756F" font-family="system-ui,sans-serif" font-size="26">Common side effects and pressure-reduction ideas.</text>
+  <text x="80" y="710" fill="#4F7567" font-family="system-ui,sans-serif" font-size="24">7 min read</text>
+  <rect x="0" y="1800" width="1080" height="120" fill="#FFFFFF" stroke="#DCE5E1"/>
+  <text x="120" y="1870" fill="#66756F" font-family="system-ui,sans-serif" font-size="22">Today</text>
+  <text x="320" y="1870" fill="#66756F" font-family="system-ui,sans-serif" font-size="22">Journey</text>
+  <text x="520" y="1870" fill="#0F382C" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Learn</text>
+  <text x="720" y="1870" fill="#66756F" font-family="system-ui,sans-serif" font-size="22">Support</text>
+</svg>

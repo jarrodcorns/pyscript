@@ -64,11 +64,13 @@ Production profile in `eas.json` builds an **AAB**:
 eas build -p android --profile production
 ```
 
-When the build finishes, download the `.aab` or use:
+When the build finishes, upload to **internal testing** (recommended first):
 
 ```bash
-eas submit -p android --profile production
+eas submit -p android --profile internal --latest
 ```
+
+See **`store/EAS_SUBMIT.md`** for the Google Play service account JSON (one-time). Production track submit uses `--profile production` when ready.
 
 **Before each new Play upload:** increment `expo.android.versionCode` in `app.json` (Play rejects duplicate version codes).
 
@@ -88,49 +90,44 @@ eas submit -p android --profile production
 
 ---
 
-## 6. Store listing
+## 6. Store listing & graphics (pre-written)
 
-Prepare in **Grow → Store presence → Main store listing**:
+Copy from repo files — minimal typing in Console:
 
-- **App name:** Anchor & Oak  
-- **Short & full description** — partner support for depression/anxiety; **not a substitute for professional care**.  
-- **Graphics:** icon, feature graphic, phone screenshots (paywall, Today, Journey, Learn, Support).  
-- **Category:** Health & Fitness (or Medical — choose consistently with content rating).  
-- **Contact email** and **website** (privacy policy host).
+| Asset / copy | File |
+|--------------|------|
+| Title, short & full description | `store/listing.md` |
+| Icon 512×512 | `store/assets/icon-512.png` |
+| Feature graphic 1024×500 | `store/assets/feature-graphic-1024x500.png` |
+| Phone screenshots 1080×1920 | `store/assets/screenshot-0*.png` |
+
+Regenerate graphics: `npm run store:assets` (uses `store/render/` HTML + headless Chrome).
 
 ---
 
 ## 7. Privacy policy URL (required)
 
-Play requires a **public privacy policy URL** covering:
+Static pages are in **`mobile/docs/`**. Deploy via GitHub Actions (see **`docs/HOSTING.md`**).
 
-- What data the app collects (e.g. local progress in AsyncStorage; no account in v1 unless added later).
-- That **Google Play** processes payment data (you do not receive full card details).
-- Health-adjacent content disclaimer.
+**Expected URL (repo `jarrodcorns/pyscript`, GitHub Pages):**
 
-Host the policy on your site and paste the URL in Play Console under **Policy → App content → Privacy policy**.
+`https://jarrodcorns.github.io/pyscript/privacy-policy.html`
+
+Before launch: replace `REPLACE_ME@pralungolabs.example` in `privacy-policy.html` and `terms.html`, push, re-run Pages deploy.
+
+Paste the privacy URL in Play Console → **Policy → App content → Privacy policy**.
 
 ---
 
 ## 8. Data safety form
 
-**Policy → App content → Data safety**
-
-For the current app (local-first, IAP via Play):
-
-- Declare **no account** / minimal collection if accurate.
-- **Purchase history** — handled by Google Play; declare financial info per Google’s questionnaire if prompted.
-- **Health** — if asked, clarify content is educational/supportive, not diagnostic; no data sold to third parties for ads if true.
-- Align answers with the privacy policy.
+Use exact answers in **`store/data-safety.md`** (local-only storage, no developer analytics, Google Play for purchases).
 
 ---
 
 ## 9. Content rating (health / mental health)
 
-1. **Policy → App content → Content rating** → start questionnaire (IARC).
-2. Answer honestly about **references to depression, anxiety, medication side effects, intimacy**.
-3. Expect descriptors related to **health/medical themes** or **mature themes** depending on intimacy content — do not understate.
-4. Apply received rating to all territories.
+Use **`store/content-rating.md`** for IARC answers (mild educational intimacy/medication themes, no UGC).
 
 ---
 
