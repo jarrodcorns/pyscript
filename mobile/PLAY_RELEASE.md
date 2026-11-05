@@ -6,7 +6,7 @@ Step-by-step guide to publish the Android app with a **R299 ZAR** one-time in-ap
 
 | Field | Value |
 |--------|--------|
-| Android package | `com.anchorandoak.app` |
+| Android package | `com.pralungolabs.anchoroak` |
 | versionName | `1.0.0` (from `app.json` → `expo.version`) |
 | versionCode | `1` (from `app.json` → `expo.android.versionCode`; bump for each Play upload) |
 | In-app product id | **`lifetime_unlock`** (non-consumable / one-time) |

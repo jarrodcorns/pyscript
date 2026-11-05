@@ -14,13 +14,13 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anchorandoak.app",
+      "bundleIdentifier": "com.pralungolabs.anchoroak",
       "infoPlist": {
         "NSUserTrackingUsageDescription": "Used only if you enable analytics integrations later."
       }
     },
     "android": {
-      "package": "com.anchorandoak.app",
+      "package": "com.pralungolabs.anchoroak",
       "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#0F382C",

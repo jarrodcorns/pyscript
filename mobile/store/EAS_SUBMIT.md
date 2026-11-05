@@ -83,7 +83,7 @@ Then in `eas.json`:
 
 Before submit succeeds:
 
-1. App created in Play Console with package `com.anchorandoak.app`
+1. App created in Play Console with package `com.pralungolabs.anchoroak`
 2. At least one manual upload **or** app signing configured (EAS can upload if permissions are correct)
 3. **Internal testing** track exists (created automatically on first internal release)
 
