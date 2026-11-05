@@ -113,9 +113,7 @@ Static pages are in **`mobile/docs/`**. Deploy via GitHub Actions (see **`docs/H
 
 `https://jarrodcorns.github.io/pyscript/privacy-policy.html`
 
-Before launch: replace `REPLACE_ME@pralungolabs.example` in `privacy-policy.html` and `terms.html`, push, re-run Pages deploy.
-
-Paste the privacy URL in Play Console → **Policy → App content → Privacy policy**.
+Support / privacy contact: **Pralungolabs@gmail.com**. Paste the privacy URL in Play Console → **Policy → App content → Privacy policy**.
 
 ---
 

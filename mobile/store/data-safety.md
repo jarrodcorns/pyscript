@@ -101,6 +101,6 @@ Anchor & Oak does not collect personal data on Pralungo Labs servers. Your progr
 
 ## Before submitting
 
-1. Replace placeholder email in `mobile/docs/privacy-policy.html`
+1. Privacy policy contact: **Pralungolabs@gmail.com** (in `mobile/docs/privacy-policy.html`)
 2. Ensure privacy policy URL matches hosted GitHub Pages URL
 3. Re-check if you add analytics, sign-in, or cloud sync later — update this file

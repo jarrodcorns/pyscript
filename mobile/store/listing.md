@@ -64,5 +64,5 @@ Publisher: Pralungo Labs (South Africa). Privacy policy linked in the store list
 |--------|------------|
 | **Category** | Health & Fitness |
 | **Tags** | Wellness, relationships, mental health education (avoid “medical treatment” claims) |
-| **Contact email** | Replace placeholder in legal docs before launch |
+| **Contact email** | `Pralungolabs@gmail.com` |
 | **Privacy policy URL** | See `mobile/docs/HOSTING.md` |

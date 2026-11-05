@@ -8,7 +8,7 @@ These static pages live in `mobile/docs/` and can be published with the repo wor
 2. **Build and deployment** → Source: **GitHub Actions** (not “Deploy from branch”)
 3. Merge or push the workflow in `.github/workflows/mobile-docs-pages.yml`
 4. Run the workflow (push to `main`/`master` or **Actions** → **Run workflow**)
-5. Replace `REPLACE_ME@pralungolabs.example` in `privacy-policy.html` and `terms.html` with your real support email, then push again
+5. Support contact in legal pages: **Pralungolabs@gmail.com**
 
 ## Public URLs (after Pages is enabled)
 
